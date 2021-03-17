@@ -6,6 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.savagecabbage321.scfoodmod.Main;
+import net.savagecabbage321.scfoodmod.data.client.modBlockStateProvider;
 import net.savagecabbage321.scfoodmod.data.client.modItemModelProvider;
 
 @Mod.EventBusSubscriber(modid = Main.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -15,6 +16,7 @@ public class dataGenerators {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
+        gen.addProvider(new modBlockStateProvider(gen, existingFileHelper));
         gen.addProvider(new modItemModelProvider(gen, existingFileHelper));
     }
 }
